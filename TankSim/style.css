@@ -333,6 +333,23 @@ p {
 .hInput label {
     flex: 0 0 auto;
     margin: 0;
+    min-width: 80px;
+    text-align: left;
+}
+
+/* Gear section labels need consistent width for alignment */
+#gear .hInput label {
+    min-width: 100px;
+}
+
+/* Buffs section labels */
+#buffs .hInput label {
+    min-width: 120px;
+}
+
+/* Stats section labels */
+#playerstats .hInput label {
+    min-width: 100px;
 }
 
 .hInput input,
@@ -382,24 +399,55 @@ input::-webkit-inner-spin-button {
 select {
     cursor: pointer;
     min-width: 150px;
+    /* Modern text overflow handling */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Dropdown options also get ellipsis */
+select option {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #gear select {
     width: 200px;
     margin-left: auto;
-    padding: 0 8px 0 0;
+    padding: 0 var(--space-sm);
 }
 
 #enchants select {
     width: 145px;
-    margin-left: auto;
-    padding: 0 8px 0 0;
+    margin-left: 0;
+    padding: 0 var(--space-sm);
+}
+
+/* Enchants column has no labels, just selects - ensure proper alignment */
+#enchants .hInput {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#enchants .hInput label {
+    display: none; /* Hide empty labels in enchants column */
+}
+
+#enchants .hInput select {
+    margin-left: 0;
+}
+
+/* Disabled selects in enchants (for items with no enchant slots) */
+#enchants select:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 #buffs select {
     width: 160px;
     margin-left: auto;
-    padding: 0 8px 0 0;
+    padding: 0 var(--space-sm);
 }
 
 #lineSelect {
