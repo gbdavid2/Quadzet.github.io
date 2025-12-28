@@ -1,0 +1,517 @@
+/**
+ * TankSim - Modern Responsive Stylesheet
+ * Accessible, mobile-first design with dark theme
+ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+    /* Colors - WCAG AAA compliant */
+    --color-bg-primary: #1a1d20;
+    --color-bg-secondary: #2a2e32;
+    --color-bg-input: #3a3f44;
+    --color-text-primary: #e8eaed;
+    --color-text-secondary: #bdc1c6;
+    --color-border: #5f6368;
+    --color-accent: #8ab4f8;
+    --color-focus: #ffc107;
+
+    /* Typography */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-base: 1rem; /* 16px */
+    --font-size-large: 1.1875rem; /* 19px - GOV.UK standard */
+    --font-size-small: 0.875rem; /* 14px */
+    --line-height-base: 1.5;
+    --line-height-heading: 1.2;
+
+    /* Spacing scale (8px base) */
+    --space-xs: 0.25rem;  /* 4px */
+    --space-sm: 0.5rem;   /* 8px */
+    --space-md: 1rem;     /* 16px */
+    --space-lg: 1.5rem;   /* 24px */
+    --space-xl: 2rem;     /* 32px */
+    --space-2xl: 3rem;    /* 48px */
+
+    /* Layout */
+    --max-width-container: 1200px;
+    --border-radius: 4px;
+    --focus-outline-width: 3px;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%; /* 16px */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    padding: var(--space-md);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    line-height: var(--line-height-heading);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+}
+
+p {
+    margin-bottom: var(--space-md);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+#bodyDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+}
+
+#Grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+/* Tablet and up: 2 columns */
+@media (min-width: 768px) {
+    #Grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+/* Desktop and up: 3 columns */
+@media (min-width: 1024px) {
+    #Grid {
+        grid-template-columns: 450px 300px 300px;
+        gap: var(--space-lg) var(--space-xl);
+    }
+}
+
+/* Header */
+#header {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+#header h2 {
+    margin-bottom: var(--space-sm);
+}
+
+/* Left Column - Gear & Enchants */
+#leftCol {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    #leftCol {
+        grid-template-columns: 2fr 1fr;
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) {
+    #leftCol {
+        grid-column: 1;
+    }
+}
+
+#gear {
+    grid-column: 1;
+}
+
+#enchants {
+    grid-column: 1;
+}
+
+@media (min-width: 768px) {
+    #enchants {
+        grid-column: 2;
+    }
+}
+
+#bottomleft {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    #bottomleft {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#talents {
+    grid-column: 1;
+}
+
+#bonuses {
+    grid-column: 1;
+}
+
+@media (min-width: 768px) {
+    #bonuses {
+        grid-column: 2;
+    }
+}
+
+/* Middle & Right Columns */
+#middleCol, #rightCol {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    #middleCol {
+        grid-column: 1;
+    }
+    #rightCol {
+        grid-column: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    #middleCol {
+        grid-column: 2;
+    }
+    #rightCol {
+        grid-column: 3;
+    }
+}
+
+/* Results Container */
+#resultContainer {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    #resultContainer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
+
+#resultContainer > div {
+    flex: 1 1 auto;
+    min-width: 250px;
+}
+
+#resultContainer table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#resultContainer th {
+    text-align: left;
+    font-weight: 700;
+    padding-bottom: var(--space-sm);
+}
+
+#resultContainer td {
+    padding: var(--space-sm) var(--space-md) var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+#selectRow td {
+    padding: 0 var(--space-sm) var(--space-md) 0;
+    border-bottom: 0;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.hInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0 0 var(--space-sm) 0;
+}
+
+.hInput label {
+    flex: 0 0 auto;
+    min-width: 100px;
+}
+
+.hInput input,
+.hInput select {
+    flex: 1 1 auto;
+    margin-left: auto;
+}
+
+.hInput .inputSwing {
+    margin-left: 0;
+}
+
+/* Input fields */
+input,
+select,
+button {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-border);
+}
+
+input,
+select {
+    background-color: var(--color-bg-input);
+    color: var(--color-text-primary);
+    padding: var(--space-sm) var(--space-md);
+}
+
+input[type="number"] {
+    width: 60px;
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select {
+    cursor: pointer;
+    min-width: 150px;
+}
+
+#gear select {
+    min-width: 200px;
+    max-width: 100%;
+}
+
+#enchants select {
+    min-width: 145px;
+    max-width: 100%;
+}
+
+#buffs select {
+    min-width: 160px;
+    max-width: 100%;
+}
+
+#lineSelect {
+    min-width: 170px;
+}
+
+/* Weapon type selects */
+#mhweptypeselect select,
+#ohweptypeselect select {
+    min-width: 90px;
+}
+
+/* Talent inputs */
+#talents .talent-input {
+    width: 40px;
+}
+
+/* Player stats */
+#playerstats input {
+    margin-left: var(--space-sm);
+    width: 50px;
+}
+
+#playerstats .playerstats {
+    margin-left: auto;
+    margin-right: var(--space-lg);
+}
+
+.playerstatcontainer {
+    margin-right: var(--space-xl);
+}
+
+/* Buttons */
+button {
+    background-color: var(--color-bg-input);
+    color: var(--color-text-primary);
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    min-width: 70px;
+    margin: 0 0 var(--space-sm) 0;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+#calcSettings button {
+    margin-left: auto;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+}
+
+/* ============================================
+   FOCUS STATES (Accessibility)
+   ============================================ */
+input:focus,
+select:focus,
+button:focus {
+    outline: var(--focus-outline-width) solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+#barContainer {
+    max-width: 300px;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-bg-input);
+    margin: var(--space-md) auto;
+    display: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 0%;
+    height: 30px;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+/* Mobile-friendly tap targets (minimum 44x44px) */
+@media (max-width: 767px) {
+    button,
+    select {
+        min-height: 44px;
+    }
+
+    input[type="checkbox"] {
+        min-width: 24px;
+        min-height: 24px;
+    }
+
+    /* Stack form inputs vertically on mobile */
+    .hInput {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hInput label {
+        width: 100%;
+    }
+
+    .hInput input,
+    .hInput select {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    button {
+        display: none;
+    }
+}
+
+/* ============================================
+   DARK MODE ENHANCEMENT (for systems with dark mode preference)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default, but could adjust if needed */
+}
+
+/* ============================================
+   REDUCED MOTION (Accessibility)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE (Accessibility)
+   ============================================ */
+@media (prefers-contrast: high) {
+    :root {
+        --color-bg-primary: #000000;
+        --color-bg-secondary: #1a1a1a;
+        --color-bg-input: #2a2a2a;
+        --color-text-primary: #ffffff;
+        --color-border: #ffffff;
+        --color-focus: #ffff00;
+    }
+
+    input,
+    select,
+    button {
+        border-width: 3px;
+    }
+}
