@@ -327,7 +327,10 @@ p {
     flex-direction: row;
     align-items: center;
     gap: var(--space-sm);
-    padding: 0 0 3px 0;
+    padding: 0;
+    margin: 0 0 3px 0;
+    height: 31px; /* Fixed height for perfect alignment between gear and enchants */
+    box-sizing: border-box;
 }
 
 .hInput label {
@@ -382,7 +385,10 @@ input,
 select {
     background-color: var(--color-bg-input);
     color: var(--color-text-primary);
-    padding: var(--space-sm) var(--space-md);
+    padding: 4px 8px;
+    height: 28px;
+    box-sizing: border-box;
+    line-height: 1.2;
 }
 
 input[type="number"] {
@@ -415,13 +421,13 @@ select option {
 #gear select {
     width: 200px;
     margin-left: auto;
-    padding: 0 var(--space-sm);
+    padding: 4px 8px;
 }
 
 #enchants select {
     width: 145px;
     margin-left: 0;
-    padding: 0 var(--space-sm);
+    padding: 4px 8px;
 }
 
 /* Enchants column has no labels, just selects - ensure proper alignment */
@@ -440,8 +446,12 @@ select option {
 
 /* Disabled selects in enchants (for items with no enchant slots) */
 #enchants select:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    /* Keep same height and padding to maintain alignment */
+    height: 28px;
+    padding: 4px 8px;
 }
 
 #buffs select {
