@@ -177,7 +177,7 @@ function saveInput()
 function loadInput()
 {
     // Tank Settings
-    document.querySelector("#race").selectedIndex = localStorage.getItem("race") ? localStorage.getItem("race") : 3;
+    document.querySelector("#race").selectedIndex = localStorage.getItem("race") ? localStorage.getItem("race") : 6; // Troll
     document.querySelector("#head").selectedIndex = localStorage.getItem("head") ? localStorage.getItem("head") : 2;
     document.querySelector("#neck").selectedIndex = localStorage.getItem("neck") ? localStorage.getItem("neck") : 14;
     document.querySelector("#shoulder").selectedIndex = localStorage.getItem("shoulder") ? localStorage.getItem("shoulder") : 5;
@@ -224,27 +224,29 @@ function loadInput()
     document.getElementById("cruelty").value = localStorage.getItem("cruelty") ? localStorage.getItem("cruelty") : 5;
     document.getElementById("anticipation").value = localStorage.getItem("anticipation") ? localStorage.getItem("anticipation") : 0;
     document.getElementById("shieldspec").value = localStorage.getItem("shieldspec") ? localStorage.getItem("shieldspec") : 5;
-    document.getElementById("toughness").value = localStorage.getItem("toughness") ? localStorage.getItem("toughness") : 3;
-    document.querySelector("#impHS").value = localStorage.getItem("impHS") ? localStorage.getItem("impHS") : 3; 
-    document.querySelector("#impSA").value = localStorage.getItem("impSA") ? localStorage.getItem("impSA") : 0; 
-    document.querySelector("#impale").value = localStorage.getItem("impale") ? localStorage.getItem("impale") : 0; 
-    document.querySelector("#defiance").value = localStorage.getItem("defiance") ? localStorage.getItem("defiance") : 5; 
-    document.querySelector("#dwspec").value = localStorage.getItem("dwspec") ? localStorage.getItem("dwspec") : 4; 
+    document.getElementById("toughness").value = localStorage.getItem("toughness") ? localStorage.getItem("toughness") : 5; // Fury tank: 5/5
+    document.querySelector("#impHS").value = localStorage.getItem("impHS") ? localStorage.getItem("impHS") : 0; // Fury tank: 0/3
+    document.querySelector("#impSA").value = localStorage.getItem("impSA") ? localStorage.getItem("impSA") : 0;
+    document.querySelector("#impale").value = localStorage.getItem("impale") ? localStorage.getItem("impale") : 0;
+    document.querySelector("#defiance").value = localStorage.getItem("defiance") ? localStorage.getItem("defiance") : 5;
+    document.querySelector("#dwspec").value = localStorage.getItem("dwspec") ? localStorage.getItem("dwspec") : 5; // Fury tank: 5/5
+    document.getElementById("flurry").value = localStorage.getItem("flurry") ? localStorage.getItem("flurry") : 5; // Fury tank: 5/5
+    document.getElementById("enrage").value = localStorage.getItem("enrage") ? localStorage.getItem("enrage") : 5; // Fury tank: 5/5 
     
     // Other Bonuses
     document.querySelector("#twoPieceDreadnaught").checked = localStorage.getItem("twoPieceDreadnaught") == "true" ? true : false;
     document.querySelector("#threePieceConqueror").checked = localStorage.getItem("threePieceConqueror") == "true" ? true : false;
     document.querySelector("#fivePieceWrath").checked = localStorage.getItem("fivePieceWrath") == "true" ? true : false;
-    document.querySelector("#berserking").checked = localStorage.getItem("berserking") == "true" ? true : false;
+    document.querySelector("#berserking").checked = localStorage.getItem("berserking") == "true" ? true : false; // Troll racial - not used by default
 
     // Buffs
     document.getElementById("mhstone").selectedIndex = localStorage.getItem("mhstone") ? localStorage.getItem("mhstone") : 0;
-    document.getElementById("ohstone").selectedIndex = localStorage.getItem("ohstone") ? localStorage.getItem("ohstone") : 0;
-    document.getElementById("strbuff").selectedIndex = localStorage.getItem("strbuff") ? localStorage.getItem("strbuff") : 0;
-    document.getElementById("apbuff").selectedIndex = localStorage.getItem("apbuff") ? localStorage.getItem("apbuff") : 0;
-    document.getElementById("agibuff").selectedIndex = localStorage.getItem("agibuff") ? localStorage.getItem("agibuff") : 0;
-    document.getElementById("statbuff").selectedIndex = localStorage.getItem("statbuff") ? localStorage.getItem("statbuff") : 0;
-    document.getElementById("foodbuff").selectedIndex = localStorage.getItem("foodbuff") ? localStorage.getItem("foodbuff") : 0;
+    document.getElementById("ohstone").selectedIndex = localStorage.getItem("ohstone") ? localStorage.getItem("ohstone") : 1; // Elemental Sharpening Stone
+    document.getElementById("strbuff").selectedIndex = localStorage.getItem("strbuff") ? localStorage.getItem("strbuff") : 2; // Juju Power
+    document.getElementById("apbuff").selectedIndex = localStorage.getItem("apbuff") ? localStorage.getItem("apbuff") : 1; // Winterfall Firewater
+    document.getElementById("agibuff").selectedIndex = localStorage.getItem("agibuff") ? localStorage.getItem("agibuff") : 1; // Elixir of the Mongoose
+    document.getElementById("statbuff").selectedIndex = localStorage.getItem("statbuff") ? localStorage.getItem("statbuff") : 1; // Spirit of Zanza
+    document.getElementById("foodbuff").selectedIndex = localStorage.getItem("foodbuff") ? localStorage.getItem("foodbuff") : 1; // Desert Dumpling
     document.getElementById("alcohol").selectedIndex = localStorage.getItem("alcohol") ? localStorage.getItem("alcohol") : 0;
     document.getElementById("potion").selectedIndex = localStorage.getItem("potion") ? localStorage.getItem("potion") : 0;
 
@@ -252,27 +254,27 @@ function loadInput()
     document.getElementById("devo").checked = localStorage.getItem("devo") == "true" ? true : false;
     document.getElementById("imploh").checked = localStorage.getItem("imploh") == "true" ? true : false;
 
-    document.getElementById("goa").checked = localStorage.getItem("goa") == "true" ? true : false;
-    document.getElementById("armorelixir").checked = localStorage.getItem("armorelixir") == "true" ? true : false;
+    document.getElementById("goa").checked = localStorage.getItem("goa") == "true" ? true : true; // Gift of Arthas
+    document.getElementById("armorelixir").checked = localStorage.getItem("armorelixir") == "true" ? true : true; // Elixir of Superior Defense
     document.getElementById("hpelixir").checked = localStorage.getItem("hpelixir") == "true" ? true : false;
     document.getElementById("titans").checked = localStorage.getItem("titans") == "true" ? true : false;
-    document.getElementById("dragonslayer").checked = localStorage.getItem("dragonslayer") == "true" ? true : false;
-    document.getElementById("zandalar").checked = localStorage.getItem("zandalar") == "true" ? true : false;
-    document.getElementById("wcb").checked = localStorage.getItem("wcb") == "true" ? true : false;
+    document.getElementById("dragonslayer").checked = localStorage.getItem("dragonslayer") == "true" ? true : true; // Dragonslayer
+    document.getElementById("zandalar").checked = localStorage.getItem("zandalar") == "true" ? true : true; // Spirit of Zandalar
+    document.getElementById("wcb").checked = localStorage.getItem("wcb") == "true" ? true : true; // Warchief's Blessing
     document.getElementById("dmf").checked = localStorage.getItem("dmf") == "true" ? true : false;
-    document.getElementById("dmstamina").checked = localStorage.getItem("dmstamina") == "true" ? true : false;
-    document.getElementById("dmAP").checked = localStorage.getItem("dmAP") == "true" ? true : false;
-    document.getElementById("dmspell").checked = localStorage.getItem("dmspell") == "true" ? true : false;
-    document.getElementById("songflower").checked = localStorage.getItem("songflower") == "true" ? true : false;
-    document.getElementById("bshout").checked = localStorage.getItem("bshout") == "true" ? true : false;
+    document.getElementById("dmstamina").checked = localStorage.getItem("dmstamina") == "true" ? true : true; // DM Stamina
+    document.getElementById("dmAP").checked = localStorage.getItem("dmAP") == "true" ? true : true; // DM Attack Power
+    document.getElementById("dmspell").checked = localStorage.getItem("dmspell") == "true" ? true : true; // DM Spell Crit
+    document.getElementById("songflower").checked = localStorage.getItem("songflower") == "true" ? true : true; // Songflower
+    document.getElementById("bshout").checked = localStorage.getItem("bshout") == "true" ? true : true; // Battle Shout
     document.getElementById("pack").checked = localStorage.getItem("pack") == "true" ? true : false;
-    document.getElementById("trueshot").checked = localStorage.getItem("trueshot") == "true" ? true : false;
-    document.getElementById("mark").checked = localStorage.getItem("mark") == "true" ? true : false;
-    document.getElementById("fortitude").checked = localStorage.getItem("fortitude") == "true" ? true : false;
-    document.getElementById("bloodpact").checked = localStorage.getItem("bloodpact") == "true" ? true : false;
+    document.getElementById("trueshot").checked = localStorage.getItem("trueshot") == "true" ? true : true; // Trueshot Aura
+    document.getElementById("mark").checked = localStorage.getItem("mark") == "true" ? true : true; // Mark of the Wild
+    document.getElementById("fortitude").checked = localStorage.getItem("fortitude") == "true" ? true : true; // Power Word: Fortitude
+    document.getElementById("bloodpact").checked = localStorage.getItem("bloodpact") == "true" ? true : true; // Blood Pact
     document.getElementById("kings").checked = localStorage.getItem("kings") == "true" ? true : false;
     document.getElementById("might").checked = localStorage.getItem("might") == "true" ? true : false;
-    document.getElementById("windfury").checked = localStorage.getItem("windfury") == "true" ? true : false;
+    document.getElementById("windfury").checked = localStorage.getItem("windfury") == "true" ? true : true; // Windfury
     document.getElementById("strofearth").checked = localStorage.getItem("strofearth") == "true" ? true : false;
     document.getElementById("graceofair").checked = localStorage.getItem("graceofair") == "true" ? true : false;
     document.getElementById("impweptotems").checked = localStorage.getItem("impweptotems") == "true" ? true : false;
