@@ -216,12 +216,12 @@ p {
 
 @media (min-width: 1024px) {
     #bottomleft {
-        display: inline-grid;
+        display: grid;
         grid-column: 1 / 3;
         grid-row: 2;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
-        gap: var(--space-md);
+        gap: 0;
     }
 }
 
@@ -233,6 +233,7 @@ p {
     #talents {
         grid-column: 1;
         grid-row: 1;
+        width: 100%;
     }
 }
 
@@ -251,6 +252,7 @@ p {
         grid-column: 2;
         grid-row: 1;
         margin-left: 10px;
+        width: 100%;
     }
 }
 
@@ -416,10 +418,18 @@ select option {
     white-space: nowrap;
 }
 
+#gear .hInput {
+    height: 31px; /* Fixed height for alignment with enchants */
+}
+
 #gear select {
     width: 200px;
     margin-left: auto;
     padding: 0 8px 0 0;
+}
+
+#enchants .hInput {
+    height: 31px; /* Match gear row height */
 }
 
 #enchants select {
