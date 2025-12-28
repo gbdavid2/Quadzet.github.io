@@ -148,3 +148,63 @@ See git log. Recent commits have focused on:
 - **Statistical analysis**: Results include mean, standard deviation, quantiles (1st/5th percentile), and threat breakpoint success rate
 - **Performance**: Parallelization across CPU cores allows 10,000+ iterations in seconds
 - **SoD-specific**: Uses PapaParse library for CSV parsing, actual WoW spell IDs for talents/runes, dynamic UI generation based on equipped runes/talents
+
+## Current Work in Progress: UI Modernization (TankSim/Classic)
+
+### Completed
+- ✅ Created external stylesheet (`TankSim/style.css`) with mobile-first responsive design
+- ✅ Converted `index.html` from UTF-16 to UTF-8 encoding
+- ✅ Added viewport meta tag and semantic HTML improvements
+- ✅ Implemented GOV.UK design principles (WCAG AAA contrast, system fonts, relative units)
+- ✅ Responsive breakpoints: Mobile (single column), Tablet (768px, 2 columns), Desktop (1024px, 3 columns)
+- ✅ Accessibility features: 3px focus outlines, prefers-reduced-motion, high-contrast mode support
+- ✅ Fixed-width labels for dropdown alignment (Gear: 100px, Buffs: 120px, Stats: 100px)
+- ✅ Text-overflow ellipsis for long item names in dropdowns
+- ✅ Gear/Enchants horizontal alignment (31px fixed row height for both columns)
+
+### Outstanding Issues to Fix
+
+#### 1. Box Size and Spacing Inconsistencies
+- **Dropdown heights**: Different sections have inconsistent select element heights
+- **Input field sizing**: Number inputs and text inputs don't align consistently
+- **Padding variations**: Some sections have different padding causing misalignment
+- **Need**: Standardize all form element heights and padding across entire UI
+
+#### 2. Remaining Alignment Issues
+- **Main Hand/Off Hand section**: Weapon type selects and weapon dropdowns may not align properly
+- **Talents section**: Input boxes for talent points need consistent sizing with labels
+- **Stats Deltas section**: Input fields on right side may have alignment issues
+- **Need**: Verify and fix alignment in all form sections beyond Gear/Enchants
+
+#### 3. Responsive Behavior Improvements Needed
+- **Mobile view**: Form inputs stack but may need better spacing/sizing on small screens
+- **Tablet view**: Some sections might overflow or wrap incorrectly at 768px breakpoint
+- **Touch targets**: Ensure all interactive elements meet 44x44px minimum on mobile
+- **Need**: Test on actual mobile devices and refine breakpoints
+
+#### 4. Visual Polish
+- **Disabled elements**: Some disabled selects (empty enchant slots) need better visual treatment
+- **Hover states**: Not all interactive elements have consistent hover feedback
+- **Focus states**: Yellow focus outline may need adjustment for better visibility in some contexts
+- **Need**: Comprehensive pass on all interactive states
+
+### Layout Structure Notes
+- `#Grid`: Main container, 3-column grid at desktop (450px + 300px + 300px)
+- `#leftCol`: Nested grid containing #gear (300px) and #enchants (150px) side-by-side
+  - `#bottomleft`: Below gear/enchants, contains #talents and #bonuses in 2-column grid
+- `#middleCol`: Contains #buffs
+- `#rightCol`: Contains #playerstats (stat deltas inputs)
+
+### Key CSS Classes
+- `.hInput`: Flex container for all form rows (label + input/select)
+  - General: `padding: 0 0 3px 0`
+  - Gear/Enchants only: `height: 31px` for horizontal alignment
+- Label widths vary by section to align dropdowns vertically within each column
+- Select elements have `text-overflow: ellipsis` for long item names
+
+### Next Steps for Claude Web
+1. Audit all form sections for consistent box sizing and alignment
+2. Create comprehensive spacing/sizing system (perhaps add more CSS custom properties)
+3. Test responsive behavior at all breakpoints in Safari
+4. Fix any remaining overlaps or misalignments in Talents, Stats, Main Hand sections
+5. Polish visual states (hover, focus, disabled) across all elements
